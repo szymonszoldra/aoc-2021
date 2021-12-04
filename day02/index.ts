@@ -45,7 +45,7 @@ const first = () => {
 
 const second = () => {
   const { forward, depth } = measurements
-    .reduce<{ forward: number, depth: number, aim: 0 }>((acc, [direction, value]) => {
+    .reduce<{ forward: number, depth: number, aim: number }>((acc, [direction, value]) => {
       switch (direction) {
         case 'up':
           acc.aim -= value;
