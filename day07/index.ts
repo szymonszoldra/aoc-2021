@@ -17,13 +17,11 @@ const first = () => {
   const min = Math.min(...measurements);
   const max = Math.max(...measurements);
 
-  const temp: number[] = [];
+  let result = Number.MAX_SAFE_INTEGER;
 
   for (let i = min; i <= max; i++) {
-    temp.push(measurements.reduce<number>((acc, val) => acc += Math.abs(val - i), 0));
+    result = Math.min(measurements.reduce<number>((acc, val) => acc += Math.abs(val - i), 0), result);
   }
-
-  const result = Math.min(...temp);
 
   console.log('First: ', result);
 };
@@ -34,13 +32,11 @@ const second = () => {
   const min = Math.min(...measurements);
   const max = Math.max(...measurements);
 
-  const temp: number[] = [];
+  let result = Number.MAX_SAFE_INTEGER;
 
   for (let i = min; i <= max; i++) {
-    temp.push(measurements.reduce<number>((acc, val) => acc += getFuel(Math.abs(val - i)), 0));
+    result = Math.min(measurements.reduce<number>((acc, val) => acc += getFuel(Math.abs(val - i)), 0), result);
   }
-
-  const result = Math.min(...temp);
 
   console.log('Second: ', result);
 };
